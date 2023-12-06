@@ -29,7 +29,7 @@ func CheckAllowedImageExtension(extension string) bool {
 		if extension == ext {
 			return true
 		}
-		return true
+		return false
 	}
 	return false
 }
