@@ -13,6 +13,7 @@ import (
 	"path"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -54,7 +55,7 @@ func HandleCreateTask(w http.ResponseWriter, r *http.Request) {
 		utils.WriteJSON(w, http.StatusBadRequest, map[string]any{"msg": "image size should not exceed 4M"})
 		return
 	}
-	if !utils.CheckAllowedImageExtension(filepath.Ext(imgHeader.Filename)) {
+	if !utils.CheckAllowedImageExtension(strings.ToLower(filepath.Ext(imgHeader.Filename))) {
 		utils.WriteJSON(w, http.StatusBadRequest, map[string]any{"msg": "invalid file extension", "supportedExtensions": []string{".jpg", ".jpeg", ".png"}})
 		return
 	}

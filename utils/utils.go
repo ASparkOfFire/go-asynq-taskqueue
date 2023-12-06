@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"net/http"
 	"path/filepath"
+	"strings"
 )
 
 func GetContentType(path string) string {
-	switch filepath.Ext(path) {
+	switch strings.ToLower(filepath.Ext(path)) {
 	case ".jpg", ".jpeg":
 		return "image/jpeg"
 	case ".png":
