@@ -2,8 +2,8 @@ package tasks
 
 import (
 	"fmt"
-	"github.com/asparkoffire/go-asynq-taskqueue/config"
-	"github.com/asparkoffire/go-asynq-taskqueue/utils"
+	"github.com/asparkoffire/go-image-upscaler/config"
+	"github.com/asparkoffire/go-image-upscaler/utils"
 	"github.com/gorilla/mux"
 	"github.com/hibiken/asynq"
 	"github.com/sirupsen/logrus"

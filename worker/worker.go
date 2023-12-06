@@ -1,7 +1,7 @@
 package worker
 
 import (
-	"github.com/asparkoffire/go-asynq-taskqueue/tasks"
+	"github.com/asparkoffire/go-image-upscaler/tasks"
 	"github.com/hibiken/asynq"
 	"log"
 )

@@ -1,8 +1,8 @@
 package transport
 
 import (
-	"github.com/asparkoffire/go-asynq-taskqueue/tasks"
-	"github.com/asparkoffire/go-asynq-taskqueue/utils"
+	"github.com/asparkoffire/go-image-upscaler/tasks"
+	"github.com/asparkoffire/go-image-upscaler/utils"
 	"github.com/gorilla/mux"
 	"net/http"
 )

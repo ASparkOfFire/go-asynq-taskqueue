@@ -1,4 +1,4 @@
-module github.com/asparkoffire/go-asynq-taskqueue
+module github.com/asparkoffire/go-image-upscaler
 
 go 1.21.3
 

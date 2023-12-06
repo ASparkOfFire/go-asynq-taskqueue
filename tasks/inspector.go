@@ -1,8 +1,8 @@
 package tasks
 
 import (
-	"github.com/asparkoffire/go-asynq-taskqueue/config"
-	"github.com/asparkoffire/go-asynq-taskqueue/utils"
+	"github.com/asparkoffire/go-image-upscaler/config"
+	"github.com/asparkoffire/go-image-upscaler/utils"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 	"github.com/hibiken/asynq"

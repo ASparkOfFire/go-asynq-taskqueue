@@ -2,9 +2,9 @@ package main
 
 import (
 	"flag"
-	"github.com/asparkoffire/go-asynq-taskqueue/config"
-	"github.com/asparkoffire/go-asynq-taskqueue/transport"
-	"github.com/asparkoffire/go-asynq-taskqueue/worker"
+	"github.com/asparkoffire/go-image-upscaler/config"
+	"github.com/asparkoffire/go-image-upscaler/transport"
+	"github.com/asparkoffire/go-image-upscaler/worker"
 	"log"
 )
 
