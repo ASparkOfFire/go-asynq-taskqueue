@@ -12,7 +12,7 @@ func Worker() {
 		asynq.Config{Concurrency: 1},
 	)
 	mux := asynq.NewServeMux()
-	mux.HandleFunc(tasks.TypeSleeperTask, tasks.HandleSleeperTask)
+	mux.HandleFunc(tasks.TypeSleeperTask, tasks.HandleUpscaleTask)
 
 	if err := srv.Run(mux); err != nil {
 		log.Fatal(err)
