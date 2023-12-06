@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/asparkoffire/go-asynq-taskqueue/config"
 	"github.com/asparkoffire/go-asynq-taskqueue/utils"
+	"github.com/gorilla/mux"
 	"github.com/hibiken/asynq"
 	"github.com/sirupsen/logrus"
 	"log"
@@ -27,7 +28,7 @@ func EnqueueTask(task *asynq.Task) (info *asynq.TaskInfo, err error) {
 	return info, nil
 }
 
-func HandleTask(w http.ResponseWriter, r *http.Request) {
+func HandleCreateTask(w http.ResponseWriter, r *http.Request) {
 	model := r.FormValue("model")
 	TTA, err := strconv.ParseBool(r.FormValue("tta"))
 	if err != nil {
@@ -100,7 +101,7 @@ func HandleTask(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleDownloadImage(w http.ResponseWriter, r *http.Request) {
-	taskID := r.URL.Query()["task_id"][0]
+	taskID := mux.Vars(r)["task_id"]
 	if taskID == "" {
 		utils.WriteJSON(w, http.StatusBadRequest, map[string]any{"msg": "taskID missing or invalid"})
 		return

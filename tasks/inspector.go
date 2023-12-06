@@ -3,6 +3,7 @@ package tasks
 import (
 	"github.com/asparkoffire/go-asynq-taskqueue/config"
 	"github.com/asparkoffire/go-asynq-taskqueue/utils"
+	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 	"github.com/hibiken/asynq"
 	"net/http"
@@ -16,7 +17,7 @@ var upgrader = websocket.Upgrader{
 }
 
 func HandleGetTask(w http.ResponseWriter, r *http.Request) {
-	taskID := r.URL.Query()["task_id"][0]
+	taskID := mux.Vars(r)["task_id"]
 	if taskID == "" {
 		utils.WriteJSON(w, http.StatusBadRequest, map[string]any{"msg": "taskID missing or invalid"})
 		return
@@ -28,11 +29,11 @@ func HandleGetTask(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	utils.WriteJSON(w, http.StatusOK, map[string]any{"msg": map[string]any{"info": info.State.String(), "result": string(info.Result)}})
+	utils.WriteJSON(w, http.StatusOK, map[string]any{"msg": info.State.String()})
 }
 
 func HandleMonitorTaskWS(w http.ResponseWriter, r *http.Request) {
-	taskID := r.URL.Query()["task_id"][0]
+	taskID := mux.Vars(r)["task_id"]
 	if taskID == "" {
 		utils.WriteJSON(w, http.StatusBadRequest, map[string]any{"msg": "taskID missing or invalid"})
 		return
@@ -68,6 +69,6 @@ func HandleMonitorTaskWS(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		time.Sleep(time.Second * 3)
+		time.Sleep(time.Second * 1)
 	}
 }

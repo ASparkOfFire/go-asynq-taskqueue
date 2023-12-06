@@ -48,7 +48,7 @@ func HandleUpscaleTask(ctx context.Context, t *asynq.Task) error {
 		cmd.Args = append(cmd.Args, "-x")
 	}
 
-	fmt.Println(cmd)
+	//fmt.Println(cmd)
 
 	stdout, err := cmd.StderrPipe()
 	if err != nil {

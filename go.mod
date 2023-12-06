@@ -3,6 +3,7 @@ module github.com/asparkoffire/go-asynq-taskqueue
 go 1.21.3
 
 require (
+	github.com/gorilla/mux v1.8.1
 	github.com/gorilla/websocket v1.5.1
 	github.com/hibiken/asynq v0.24.1
 	github.com/sirupsen/logrus v1.9.3
