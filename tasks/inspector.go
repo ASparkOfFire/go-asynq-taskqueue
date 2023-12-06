@@ -17,6 +17,10 @@ var upgrader = websocket.Upgrader{
 
 func HandleGetTask(w http.ResponseWriter, r *http.Request) {
 	taskID := r.URL.Query()["task_id"][0]
+	if taskID == "" {
+		utils.WriteJSON(w, http.StatusBadRequest, map[string]any{"msg": "taskID missing or invalid"})
+		return
+	}
 
 	info, err := inspector.GetTaskInfo(config.TaskQueue, taskID)
 	if err != nil {
@@ -29,6 +33,11 @@ func HandleGetTask(w http.ResponseWriter, r *http.Request) {
 
 func HandleMonitorTaskWS(w http.ResponseWriter, r *http.Request) {
 	taskID := r.URL.Query()["task_id"][0]
+	if taskID == "" {
+		utils.WriteJSON(w, http.StatusBadRequest, map[string]any{"msg": "taskID missing or invalid"})
+		return
+	}
+
 	var info *asynq.TaskInfo
 
 	ws, err := upgrader.Upgrade(w, r, nil)

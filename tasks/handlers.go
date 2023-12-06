@@ -101,6 +101,11 @@ func HandleTask(w http.ResponseWriter, r *http.Request) {
 
 func HandleDownloadImage(w http.ResponseWriter, r *http.Request) {
 	taskID := r.URL.Query()["task_id"][0]
+	if taskID == "" {
+		utils.WriteJSON(w, http.StatusBadRequest, map[string]any{"msg": "taskID missing or invalid"})
+		return
+	}
+
 	var info *asynq.TaskInfo
 
 	info, err := inspector.GetTaskInfo(config.TaskQueue, taskID)
